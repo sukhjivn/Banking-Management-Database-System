@@ -1,0 +1,38 @@
+<!-- public/views/nerd.html -->
+
+<!-- HEADER AND TODO COUNT -->
+<div class="jumbotron text-center">
+	<h1>Total Bank accounts <span class="label label-info">{{ account.length }}</span></h1>
+</div>
+
+<!-- TODO LIST -->
+<div id="todo-list" class="row">
+    <div class="col-sm-4 col-sm-offset-4">
+
+        <!-- LOOP OVER THE Accounts IN $scope.account -->
+        <div class="checkbox" ng-repeat="single_account in account">
+            <label>
+                <input type="checkbox" ng-click="deleteAccount(single_account._id)"> {{ single_account._id }} &nbsp;&nbsp; {{single_account.holder}} 
+            </label>
+        </div>
+
+    </div>
+</div>
+
+<!-- FORM TO CREATE ACCOUNT -->
+<div id="account-form" class="row">
+    <div class="col-sm-8 col-sm-offset-2 text-center">
+        <form>
+            <div class="form-group">
+
+                <!-- BIND THIS VALUE TO formData.text IN ANGULAR -->
+                <input type="text" class="form-control input-lg text-center" placeholder="Account holder name" ng-model="formData.holder">
+		<input type="text" class="form-control input-lg text-center" placeholder="Account type" ng-model="formData.type">
+            </div>
+
+            <!-- createAccount() WILL CREATE NEW TODOS -->
+            <button type="submit" class="btn btn-primary btn-lg" ng-click="createAccount()">Add</button>
+        </form>
+    </div>
+</div>
+
